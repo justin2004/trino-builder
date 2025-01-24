@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y wget git
 WORKDIR /root 
 RUN wget 'https://download.java.net/java/GA/jdk23.0.2/6da2a6609d6e406f85c491fcb119101b/7/GPL/openjdk-23.0.2_linux-x64_bin.tar.gz' && tar -xaf openjdk-23.0.2_linux-x64_bin.tar.gz
 RUN git clone https://github.com/trinodb/trino.git
-CMD bash -c 'declare -x PATH=$PATH:/root/jdk-23.0.2/bin/ ; declare -x JAVA_HOME=/root/jdk-23.0.2 ;  cd trino ; git checkout 468 ; ./mvnw install -e -DskipTests -pl !docs'
+CMD bash -c 'declare -x PATH=$PATH:/root/jdk-23.0.2/bin/ ; declare -x JAVA_HOME=/root/jdk-23.0.2 ;  cd trino ; git checkout 468 ; ./mvnw install -e -DskipTests -pl !docs && cp /root/trino/client/trino-cli/target/trino-cli-468-executable.jar /mnt/ ; cp /root/trino/core/trino-server/target/trino-server-468.tar.gz /mnt/'
 
 # NOTE we don't build the `docs` ^^
 

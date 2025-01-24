@@ -1,10 +1,8 @@
 # trino-builder
 
-## run it
+## build trino from source
 
 - have `make` and `docker` installed
 - run `make`
+- find a built trino client `.jar` and a trino server `.tar.gz` in your current directory
 
-## gotchas
-
-at the moment the all the jars end up in the docker image which gets deleted once the container stop running. later i'll update this to output the jars in your host machine's filesystem
